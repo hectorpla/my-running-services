@@ -1,2 +1,9 @@
 .idea/
 *.iml
+
+
+# credentials
+*.properties
+
+# build
+target/

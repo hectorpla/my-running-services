@@ -9,7 +9,9 @@ import java.util.List;
 /**
  * Created by hectorlueng on 4/13/18.
  */
-public interface InfoService {
+
+
+public interface RunningInfoService {
     RunningInformation saveRunningInfo(RunningInformation info);
     Page<RunningInformation> findByUserName(String userName, Pageable pageable);
     Page<RunningInformation> findByRunningId(String runningId, Pageable pageable);

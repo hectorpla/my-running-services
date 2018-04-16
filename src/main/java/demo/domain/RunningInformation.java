@@ -1,11 +1,13 @@
 package demo.domain;
 
+import com.fasterxml.jackson.annotation.JsonCreator;
 import lombok.Data;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import java.util.Random;
 
 /**
  * Created by hectorlueng on 4/13/18.
@@ -18,16 +20,29 @@ public class RunningInformation {
 
     @Id
     @GeneratedValue
-    private String id;
+    private long id;
 
-    private String runningId;
     private double latitude;
     private double longitude;
     private double runningDistance;
     private double totalRunningTime;
-    private int heartRate;
+
+    private String runningId;
     private String userName;
     private String address;
 
+    private int heartRate = 0;
+    private String healthWarningLevel;
 
+
+    public RunningInformation() {
+        heartRate = 60 + (int)(140 * Math.random() + 1);
+        if (heartRate <= 75) {
+            healthWarningLevel = "LOW";
+        } else if (heartRate <= 120) {
+            healthWarningLevel = "NORMAL";
+        } else {
+            healthWarningLevel = "HIGH";
+        }
+    }
 }
