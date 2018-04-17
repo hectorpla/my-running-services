@@ -12,7 +12,7 @@ import java.util.List;
 
 
 public interface RunningInfoService {
-    RunningInformation saveRunningInfo(RunningInformation info);
+    RunningInformation saveRunningInformation(RunningInformation info);
     Page<RunningInformation> findByUserName(String userName, Pageable pageable);
     Page<RunningInformation> findByRunningId(String runningId, Pageable pageable);
     Page<RunningInformation> findAllOrderByHealthWarningLevel(Pageable pageable);

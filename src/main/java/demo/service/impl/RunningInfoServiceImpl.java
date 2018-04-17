@@ -23,7 +23,7 @@ public class RunningInfoServiceImpl implements RunningInfoService {
     }
 
     @Override
-    public RunningInformation saveRunningInfo(RunningInformation info) {
+    public RunningInformation saveRunningInformation(RunningInformation info) {
         return runningInfoRepository.save(info);
     }
 
@@ -39,7 +39,7 @@ public class RunningInfoServiceImpl implements RunningInfoService {
 
     @Override
     public Page<RunningInformation> findAllOrderByHealthWarningLevel(Pageable pageable) {
-        return findAllOrderByHealthWarningLevel(pageable);
+        return runningInfoRepository.findAllByOrderByHealthWarningLevelDesc(pageable);
     }
 
     @Override
