@@ -7,6 +7,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+
+import java.util.List;
 
 /**
  * Created by hectorlueng on 4/15/18.
@@ -28,6 +31,11 @@ public class RunningInfoServiceImpl implements RunningInfoService {
     }
 
     @Override
+    public List<RunningInformation> saveBatchInformation(List<RunningInformation> infoList) {
+        return runningInfoRepository.save(infoList);
+    }
+
+    @Override
     public Page<RunningInformation> findByUserName(String userName, Pageable pageable) {
         return runningInfoRepository.findByUserName(userName, pageable);
     }
@@ -43,6 +51,7 @@ public class RunningInfoServiceImpl implements RunningInfoService {
     }
 
     @Override
+    @Transactional // necessary because
     public void deleteByRunningId(String runningId) {
         runningInfoRepository.deleteByRunningId(runningId);
     }
